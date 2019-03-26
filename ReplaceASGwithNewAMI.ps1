@@ -17,7 +17,7 @@ ReplaceASGwithNewAMI.ps1 -ASGName "ASG-Test" -AMIId "ami-0a313d6098716f372"
 AMI Id for test: ami-0a313d6098716f372 or ami-0de53d8956e8dcf80 ; ASG for test: ASG-Test or use yours
 
 .LINK
-https://github.com
+https://github.com/igor9052/aws-scripts
  
  #>
  
@@ -35,15 +35,15 @@ https://github.com
  $ASGroup = Get-ASAutoScalingGroup -AutoScalingGroupName $ASGName
 
  # Check if AS Group is found. Exit script if there is no such ASG.
- if ($ASGroup -eq $null) {
-    echo "ASG Name <<$ASGName>> hasn't been found!"
+ if ($null -eq $ASGroup) {
+    Write-Output "ASG Name <<$ASGName>> hasn't been found!"
     exit
  }
 
  # Check if specified AMI is found
  $AMI = Get-EC2Image -ImageId $AMIId
- if ($AMI -eq $null) {
-    echo "AMI <<$AMIId>> hasn't been found!"
+ if ($null -eq $AMI) {
+    Write-Output "AMI <<$AMIId>> hasn't been found!"
     exit
  }
 
